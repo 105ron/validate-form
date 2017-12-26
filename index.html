@@ -3,44 +3,68 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Complete the form to win amazing prizes!</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-    <link rel="icon" sizes="16x16" href="../images/favicon.ico">
+    <link rel="icon" href="../images/favicon.ico" sizes="16x16">
+    <title>Mint > Start Here</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400" rel="stylesheet">
   </head>
 
   <body>
-    <h1>Create your Account</h1>
-    <form action="" method="post" class="STYLE-NAME">
-      <h1>Contact Form
-          <span>Please fill all the texts in the fields.</span>
-      </h1>
-      <label>
-          <span>Your Name :</span>
-          <input id="name" type="text" name="name" placeholder="Your Full Name" />
-      </label>
-     
-      <label>
-          <span>Your Email :</span>
-          <input id="email" type="email" name="email" placeholder="Valid Email Address" />
-      </label>
-     
-      <label>
-          <span>Message :</span>
-          <textarea id="message" name="message" placeholder="Your Message to Us"></textarea>
-      </label>
-       <label>
-          <span>Subject :</span><select name="selection">
-          <option value="Job Inquiry">Job Inquiry</option>
-          <option value="General Question">General Question</option>
-          </select>
-      </label>    
-       <label>
-          <span>&nbsp;</span>
-          <input type="button" class="button" value="Send" />
-      </label>    
-  </form>
+    <div id="container">
+        <div id="top-logo">
+          <nav>
+            <ul>
+              <li><a href="#">Sign Up</a></li>
+              <li><a href="#">Log in</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="main-section">
+          <section class="form"> 
+          <h1>See all your finances in one place & create a budget</h1>
+            <form action="#" method="get">
+              <label for="email">Your Email</label>
+              <input type="email" name="email" id="email" required>
+              <label for="email_confirmation">Confirm Email</label>
+              <input type="email" name="email_confirmation" id="email_confirmation" required>
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" required>
+              <label for="password_confirmation">Confirm Password</label>
+              <input type="password" name="password_confirmation" id="password_confirmation" required>
+              <div class="wrapper">
+                <input id="check-box" type="checkbox" name="remember">
+                <label id="check-box-label">Remember me</label>
+              </div>
+              <button type="submit" name="sign up">Sign up</button>
+              <p>By clicking Sign Up you agree to our <a href="https://www.mint.com/terms">Terms of Use</a> and <a href="https://www.mint.com/privacy">Privacy Statement</a></p>
+            </form>
+        </section>
+        <aside>
+          <h4>Why you'll love it</h4>
+          <ul>
+            <li>See all your accounts in one place</li>
+            <li>Set a budget and pay down your debt</li>
+            <li>Find the best ways to grow your money</li>
+            <li>Stay <a href="http://www.mint.com/privacy/">safe and secure</a></li>
+          </ul>
+        </aside>
+        <div class="border-line"></div>
+      </div><!-- /div.main-section  -->
+      <footer>
+          <ul>
+            <li><a href="https://help.mint.com/">Support</a></li>
+            <li><a href="http://www.mint.com/terms">Terms of Use</a></li>
+            <li><a href="http://www.mint.com/privacy">Privacy</a></li>
+            <li><a href="http://about.intuit.com/legal/">Legal and Trademark Notices</a></li>
+            <li><a href="http://about.intuit.com/about_intuit/">About Intuit</a></li>
+          </ul>
+          <img src="images/getseal.gif" alt="Norton Symantec security seal" width="85" height="58">
+          <img src="images/truste.svg" alt="Truste Certififed Privacy seal" width="140" height="58">
+          <p>© 2016 Intuit, Inc.  |  ph7456.3 - spa91.18 </p>
+      </footer>
+    </div><!-- /div.container  -->
   </body>
   <script src="scripts/validation.js"></script>
 </html>
