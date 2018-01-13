@@ -12,37 +12,37 @@
   </head>
 
   <body>
-    <div id="container">
-        <div id="top-logo">
-          <nav>
-            <ul>
-              <li><a href="#">Sign Up</a></li>
-              <li><a href="#">Log in</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="main-section">
-          <section class="form"> 
-          <h1>See all your finances in one place & create a budget</h1>
-            <form action="#" method="get">
-              <label for="email">Your Email</label>
-              <input type="email" name="email" id="email" required>
-              <label for="email_confirmation">Confirm Email</label>
-              <input type="email" name="email_confirmation" id="email_confirmation" required>
-              <label for="password">Password</label>
-              <input type="password" name="password" id="password" required>
-              <label for="password_confirmation">Confirm Password</label>
-              <input type="password" name="password_confirmation" id="password_confirmation" required>
-              <div class="wrapper">
-                <input id="check-box" type="checkbox" name="remember">
-                <label id="check-box-label">Remember me</label>
-              </div>
-              <button type="submit" name="sign up">Sign up</button>
-              <p>By clicking Sign Up you agree to our <a href="https://www.mint.com/terms">Terms of Use</a> and <a href="https://www.mint.com/privacy">Privacy Statement</a></p>
-            </form>
+    <div class="container">
+      <nav class ="top-nav">
+        <div class="top-logo"></div>
+        <ul class="sign-in">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log in</a></li>
+        </ul>
+      </nav>
+      <div class="main-section">
+        <section class="form"> 
+        <h1>See all your finances in one place & create a budget</h1>
+          <form action="#" method="get">
+            <label for="email">Your Email</label>
+            <input type="email" name="email" id="email" required>
+            <label for="email_confirmation">Confirm Email</label>
+            <input type="email" name="email-confirmation" id="email-confirmation" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" name="password-confirmation" id="password-confirmation" required>
+            <div class="wrapper">
+              <input class="check-box" type="checkbox" name="remember">
+              <label class="check-box-label">Remember me</label>
+            </div>
+            <button type="submit" name="sign up">Sign up</button>
+            <p class="sign-up-terms">By clicking Sign Up you agree to our <a href="https://www.mint.com/terms">Terms of Use</a> and <a href="https://www.mint.com/privacy">Privacy Statement</a></p>
+          </form>
         </section>
+        <div class="line"></div>
         <aside>
-          <h4>Why you'll love it</h4>
+          <h4 class="aside-heading">Why you'll love it</h4>
           <ul>
             <li>See all your accounts in one place</li>
             <li>Set a budget and pay down your debt</li>
@@ -50,18 +50,19 @@
             <li>Stay <a href="http://www.mint.com/privacy/">safe and secure</a></li>
           </ul>
         </aside>
-        <div class="border-line"></div>
       </div><!-- /div.main-section  -->
       <footer>
-          <ul>
+          <ul class="footer-nav">
             <li><a href="https://help.mint.com/">Support</a></li>
             <li><a href="http://www.mint.com/terms">Terms of Use</a></li>
             <li><a href="http://www.mint.com/privacy">Privacy</a></li>
             <li><a href="http://about.intuit.com/legal/">Legal and Trademark Notices</a></li>
             <li><a href="http://about.intuit.com/about_intuit/">About Intuit</a></li>
           </ul>
-          <img src="images/getseal.gif" alt="Norton Symantec security seal" width="85" height="58">
-          <img src="images/truste.svg" alt="Truste Certififed Privacy seal" width="140" height="58">
+          <div class="bottom-logos">
+            <img src="images/getseal.gif" alt="Norton Symantec security seal" width="85" height="58">
+            <img src="images/truste.svg" alt="Truste Certififed Privacy seal" width="140" height="58">
+          </div>
           <p>© 2016 Intuit, Inc.  |  ph7456.3 - spa91.18 </p>
       </footer>
     </div><!-- /div.container  -->
