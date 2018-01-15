@@ -25,13 +25,33 @@
         <h1>See all your finances in one place & create a budget</h1>
           <form action="#" method="get">
             <label for="email">Your Email</label>
-            <input type="email" name="email" id="email" required>
+            <div class="input-container">
+              <input type="email" name="email" id="email" required>
+              <div class="cross email-cross hidden"></div>
+              <div class="tick email-tick hidden"></div>
+            </div>
+            <div id="email-errors"></div>
             <label for="email_confirmation">Confirm Email</label>
-            <input type="email" name="email-confirmation" id="email-confirmation" required>
+            <div class="input-container">
+              <input type="email" name="email-confirmation" id="email-confirmation" required>
+              <div class="cross email-cross-confirmation hidden"></div>
+              <div class="tick email-tick-confirmation hidden"></div>
+            </div>
+            <div id="email-confirmation-errors"></div>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <div class="input-container">
+              <input type="password" name="password" id="password" required>
+              <div class="cross password-cross hidden"></div>
+              <div class="tick password-tick hidden"></div>
+            </div>
+            <div id="password-errors"></div>
             <label for="password_confirmation">Confirm Password</label>
-            <input type="password" name="password-confirmation" id="password-confirmation" required>
+            <div class="input-container">
+              <input type="password" name="password-confirmation" id="password-confirmation" required>
+              <div class="cross password-cross-confirmation hidden"></div>
+              <div class="tick password-tick-confirmation hidden"></div>
+            </div>
+            <div id="password-confirmation-errors"></div>
             <div class="wrapper">
               <input class="check-box" type="checkbox" name="remember">
               <label class="check-box-label">Remember me</label>

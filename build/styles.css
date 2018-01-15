@@ -100,9 +100,31 @@ label {
 }
 
 input {
-  display: block;
   height: 32px;
-  width: 320px;
+  width: 360px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tick {
+  background-image: url(../images/tick.jpg);
+  background-size: cover;
+  height: 40px;/* Just to display BG image*/
+  width: 54px;
+}
+
+.cross {
+  background-image: url(../images/cross.png);
+  background-size: contain;
+  height: 35px;/* Just to display BG image*/
+  width: 35px;
+}
+
+.hidden {
+  display: none;
 }
 
 .check-box, .check-box-label {
