@@ -127,6 +127,10 @@ input {
   display: none;
 }
 
+.error {
+  color: red;
+}
+
 .check-box, .check-box-label {
   display: inline;
   position: relative;
