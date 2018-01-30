@@ -1,4 +1,10 @@
 'use strict';
+
+const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+const passwordRegex = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/
+
+
+
 const hasClass = (element, className) => {
   const el = document.querySelector(`.${ element }`)
   return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
@@ -17,10 +23,7 @@ const removeClass = (element, className) => {
   else el.className = el.className.replace(new RegExp('\\b'+ className+'\\b', 'g'), '');
 }
 
-const isValidEmail = email => {
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  return emailRegex.test(email);
-};
+const isValid = (field, regex) => ( regex.test(field) );
 
 const updateValidationDisplay = validation => {
   const errorDiv = document.getElementById(validation.errorLocation);
@@ -29,27 +32,29 @@ const updateValidationDisplay = validation => {
   removeClass(validation.visible, 'hidden');
 };
 
-const checkEmail = (event) => {
-  const email = event.target.value;
+const checkEmail = (email) => {
+  let valid = true;
   const emailDisplay = {
     visible: 'email-tick',
     hidden: 'email-cross',
     errorLocation: 'email-errors',
     error: ''
   };
-  if (!isValidEmail(email)) {
+  if (!isValid(email, emailRegex)) {
+    valid = false;
     emailDisplay.visible = 'email-cross';
     emailDisplay.hidden = 'email-tick';
     emailDisplay.error = 'Please enter valid email address'
   }
   updateValidationDisplay(emailDisplay);
+  return valid;
 }
 
 const emailInput = document.getElementById('email');
-emailInput.addEventListener('blur', checkEmail);
+emailInput.addEventListener('blur', (event) => checkEmail(event.target.value));
 
-const checkEmailConfirmation = (event) => {
-  const emailConfirmation = event.target.value;
+const checkEmailConfirmation = (emailConfirmation) => {
+  let valid = true;
   const email = emailInput.value;
   const emailDisplay = {
     visible: 'email-tick-confirmation',
@@ -57,13 +62,42 @@ const checkEmailConfirmation = (event) => {
     errorLocation: 'email-errors-confirmation',
     error: ''
   };
-  if (email !== emailConfirmation) {
+  if (email !== emailConfirmation || !isValid(email, emailRegex)) {
+    valid = false;
     emailDisplay.visible = 'email-cross-confirmation';
     emailDisplay.hidden = 'email-tick-confirmation';
-    emailDisplay.error = 'Email addresses must match'
+    email !== emailConfirmation 
+      ? emailDisplay.error = 'Confirmatation email must match'
+      : emailDisplay.error = 'Please enter valid email address';
   }
   updateValidationDisplay(emailDisplay);
+  return valid;
 }
 
 const emailInputConfirmation = document.getElementById('email-confirmation');
-emailInputConfirmation.addEventListener('blur', checkEmailConfirmation);
+emailInputConfirmation.addEventListener('blur', (event) => checkEmailConfirmation(event.target.value));
+
+
+
+
+
+const checkPassword = (password) => {
+  let valid = true;
+  const passwordDisplay = {
+    visible: 'password-tick',
+    hidden: 'password-cross',
+    errorLocation: 'password-errors',
+    error: ''
+  };
+  if (!isValid(password, passwordRegex)) {
+    valid = false;
+    passwordDisplay.visible = 'password-cross';
+    passwordDisplay.hidden = 'password-tick';
+    passwordDisplay.error = '"Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&?'
+  }
+  updateValidationDisplay(passwordDisplay);
+  return valid;
+}
+
+const passwordInput = document.getElementById('password');
+passwordInput.addEventListener('blur', (event) => checkPassword(event.target.value));
