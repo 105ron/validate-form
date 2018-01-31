@@ -19,7 +19,7 @@ const emailConfirmationFields = {
   hidden: 'email-cross-confirmation',
   errorLocation: 'email-errors-confirmation',
   error: '',
-  errorMessage: ['Confirmatation email must match', 'Please enter valid email address']
+  errorMessage: ['Email addresses must match', 'Please enter valid email address']
 };
 
 const passwordFields = {
@@ -31,6 +31,16 @@ const passwordFields = {
   error: '',
   errorMessage: 'Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&?'
 }
+
+const passwordConfirmationFields = {
+  valid: true,
+  regex: passwordRegex,
+  visible: 'password-tick-confirmation',
+  hidden: 'password-cross-confirmation',
+  errorLocation: 'password-errors-confirmation',
+  error: '',
+  errorMessage: ['Passwords do not match', 'Please enter valid password']
+};
 
 const hasClass = (element, className) => {
   const el = document.querySelector(`.${ element }`)
@@ -78,9 +88,6 @@ const checkFirstField = (field, fieldProperties) => {
   updateValidationDisplay(fieldProperties);
 }
 
-const emailInput = document.getElementById('email');
-emailInput.addEventListener('blur', (event) => checkFirstField(event.target.value, emailFields));
-
 const checkConfirmationField = (field, originalField, fieldProperties) => {
   if (field === originalField && isValid(field, fieldProperties.regex)) {
     if (!fieldProperties.valid) resetErrorMessage(fieldProperties); //If it's now valid apply the tick and remove errror message
@@ -93,26 +100,14 @@ const checkConfirmationField = (field, originalField, fieldProperties) => {
   updateValidationDisplay(fieldProperties);
 }
 
-const emailInputConfirmation = document.getElementById('email-confirmation');
-emailInputConfirmation.addEventListener('blur', (event) => checkConfirmationField(event.target.value, emailInput.value, emailConfirmationFields));
+const emailInput = document.getElementById('email');
+emailInput.addEventListener('blur', (event) => checkFirstField(event.target.value, emailFields));
 
-const checkPassword = (password) => {
-  let valid = true;
-  const passwordDisplay = {
-    visible: 'password-tick',
-    hidden: 'password-cross',
-    errorLocation: 'password-errors',
-    error: ''
-  };
-  if (!isValid(password, passwordRegex)) {
-    valid = false;
-    passwordDisplay.visible = 'password-cross';
-    passwordDisplay.hidden = 'password-tick';
-    passwordDisplay.error = '"Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&?'
-  }
-  updateValidationDisplay(passwordDisplay);
-  return valid;
-}
+const emailConfirmationInput = document.getElementById('email-confirmation');
+emailConfirmationInput.addEventListener('blur', (event) => checkConfirmationField(event.target.value, emailInput.value, emailConfirmationFields));
 
 const passwordInput = document.getElementById('password');
 passwordInput.addEventListener('blur', (event) => checkFirstField(event.target.value, passwordFields));
+
+const passwordConfirmationInput = document.getElementById('password-confirmation');
+passwordConfirmationInput.addEventListener('blur', (event) => checkConfirmationField(event.target.value, passwordInput.value, passwordConfirmationFields));
