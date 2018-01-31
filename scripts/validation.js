@@ -111,3 +111,20 @@ passwordInput.addEventListener('blur', (event) => checkFirstField(event.target.v
 
 const passwordConfirmationInput = document.getElementById('password-confirmation');
 passwordConfirmationInput.addEventListener('blur', (event) => checkConfirmationField(event.target.value, passwordInput.value, passwordConfirmationFields));
+
+const validInput = (field, fieldProperties) => ( field.value && fieldProperties.valid )
+
+const allValid = () => ( validInput(emailInput, emailFields) && 
+                         validInput(emailConfirmationInput, emailConfirmationFields) &&
+                         validInput(passwordInput, passwordFields) &&
+                         validInput(passwordConfirmationInput, passwordConfirmationFields) )
+
+const submitFields = (event) => {
+  event.preventDefault();
+  (allValid()) 
+    ? alert('Success, Your new account will now be created')
+    : alert('Failed, please re-renter fields marked with red X');
+}
+
+const signUp = document.querySelector('.sign-up');
+signUp.addEventListener('click', submitFields);
