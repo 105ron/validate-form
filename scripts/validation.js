@@ -2,6 +2,7 @@
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 const passwordRegex = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$/
+
 const emailFields = {
   valid: true,
   regex: emailRegex,
@@ -100,6 +101,7 @@ const checkConfirmationField = (field, originalField, fieldProperties) => {
   updateValidationDisplay(fieldProperties);
 }
 
+//event listeners for when inputs fields lose focus
 const emailInput = document.getElementById('email');
 emailInput.addEventListener('blur', (event) => checkFirstField(event.target.value, emailFields));
 
@@ -112,15 +114,23 @@ passwordInput.addEventListener('blur', (event) => checkFirstField(event.target.v
 const passwordConfirmationInput = document.getElementById('password-confirmation');
 passwordConfirmationInput.addEventListener('blur', (event) => checkConfirmationField(event.target.value, passwordInput.value, passwordConfirmationFields));
 
-const validInput = (field, fieldProperties) => ( field.value && fieldProperties.valid )
+const runValidations = () => {
+  const email = emailInput.value
+  const emailConfirmation = emailConfirmationInput.value;
+  const password = passwordInput.value;
+  const passwordConfirmation = passwordConfirmationInput.value;
+  checkFirstField(email, emailFields);
+  checkConfirmationField(emailConfirmation, email, emailConfirmationFields);
+  checkFirstField(password, passwordFields);
+  checkConfirmationField(passwordConfirmation, password, passwordConfirmationFields);
+}
 
-const allValid = () => ( validInput(emailInput, emailFields) && 
-                         validInput(emailConfirmationInput, emailConfirmationFields) &&
-                         validInput(passwordInput, passwordFields) &&
-                         validInput(passwordConfirmationInput, passwordConfirmationFields) )
+const allValid = () => ( emailFields.valid && emailConfirmationFields.valid &&
+                         passwordFields.valid && passwordConfirmationFields.valid );
 
 const submitFields = (event) => {
   event.preventDefault();
+  runValidations();
   (allValid()) 
     ? alert('Success, Your new account will now be created')
     : alert('Failed, please re-renter fields marked with red X');
